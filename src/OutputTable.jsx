@@ -8,36 +8,40 @@ import {
   TableRow,
 } from "flowbite-react";
 
-const OutputTable = () => {
+const OutputTable = ({ data }) => {
   return (
     <div className="overflow-x-auto">
       <Table hoverable>
         <TableHead>
-          <TableHeadCell>Product name</TableHeadCell>
-          <TableHeadCell>Color</TableHeadCell>
-          <TableHeadCell>Category</TableHeadCell>
-          <TableHeadCell>Price</TableHeadCell>
+          <TableHeadCell>#</TableHeadCell>
+          <TableHeadCell>Avatar</TableHeadCell>
+          <TableHeadCell>Name</TableHeadCell>
+          <TableHeadCell>Gender</TableHeadCell>
           <TableHeadCell>
             <span className="sr-only">Edit</span>
           </TableHeadCell>
         </TableHead>
         <TableBody className="divide-y">
-          <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
-            <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {'Apple MacBook Pro 17"'}
-            </TableCell>
-            <TableCell>Sliver</TableCell>
-            <TableCell>Laptop</TableCell>
-            <TableCell>$2999</TableCell>
-            <TableCell>
-              <a
-                href="#"
-                className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-              >
-                Edit
-              </a>
-            </TableCell>
-          </TableRow>
+          {data.map((item, index) => {
+            return (
+              <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                  {index + 1}
+                </TableCell>
+                <TableCell>Avatar</TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>{item.gender}</TableCell>
+                <TableCell>
+                  <a
+                    href="#"
+                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                  >
+                    Edit
+                  </a>
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>
